@@ -1,0 +1,111 @@
+import React from 'react'
+import { motion } from 'framer-motion'
+import { GitHubIcon } from './icons/GitHubIcon'
+import { LinkedInIcon } from './icons/LinkedInIcon'
+
+export function Footer() {
+  const currentYear = new Date().getFullYear()
+
+  const links = [
+    { label: 'Home', url: '#home' },
+    { label: 'Projects', url: '#projects' },
+    { label: 'Skills', url: '#skills' },
+    { label: 'Education', url: '#education' },
+  ]
+
+  const social = [
+    { icon: LinkedInIcon, label: 'LinkedIn', url: 'https://www.linkedin.com/in/nirav-surati-428864222' },
+    { icon: GitHubIcon, label: 'GitHub', url: 'https://github.com/Nirav1810/' },
+  ]
+
+  return (
+    <motion.footer
+      className="bg-slate-900 dark:bg-slate-950 text-slate-50 py-12"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
+          {/* Brand */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <a href="#home" className="text-xl font-bold mb-4 block">
+              Nirav Surati
+            </a>
+            <p className="text-slate-400 text-sm leading-relaxed">
+              Computer Science student building full-stack applications and blockchain solutions with modern technologies.
+            </p>
+          </motion.div>
+
+          {/* Navigation */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
+            <h3 className="font-semibold mb-4">Navigation</h3>
+            <div className="space-y-2">
+              {links.map((link) => (
+                <motion.a
+                  key={link.label}
+                  href={link.url}
+                  className="block text-slate-400 hover:text-white text-sm transition-colors"
+                  whileHover={{ x: 4 }}
+                >
+                  {link.label}
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Social & Contact */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <h3 className="font-semibold mb-4">Connect</h3>
+            <div className="flex gap-3">
+              {social.map((item, i) => (
+                <motion.a
+                  key={i}
+                  href={item.url}
+                  title={item.label}
+                  className="w-10 h-10 rounded-lg bg-slate-800 hover:bg-blue-600 flex items-center justify-center transition-colors text-slate-50"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {item.isEmoji ? (
+                    <span className="text-lg">{item.icon}</span>
+                  ) : (
+                    <item.icon />
+                  )}
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Divider */}
+        <div className="border-t border-slate-800 pt-8">
+          <motion.p
+            className="text-center text-slate-400 text-sm"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
+            © {currentYear} Nirav Surati. All rights reserved. Built with React, Tailwind CSS & Framer Motion.
+          </motion.p>
+        </div>
+      </div>
+    </motion.footer>
+  )
+}
