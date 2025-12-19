@@ -1,5 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Reveal } from './Reveal'
+import { TiltCard } from './TiltCard'
 
 export function Projects() {
   const projects = [
@@ -45,10 +47,11 @@ export function Projects() {
   }
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 20, scale: 0.95 },
     visible: {
       opacity: 1,
       y: 0,
+      scale: 1,
       transition: { duration: 0.5 },
     },
   }
@@ -57,87 +60,97 @@ export function Projects() {
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-800">
       <div className="max-w-6xl mx-auto">
         {/* Section heading */}
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-            Featured Projects
-          </h2>
-          <p className="text-slate-600 dark:text-slate-400">
+        <div className="mb-16">
+          <Reveal>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              Featured Projects
+            </h2>
+          </Reveal>
+          <motion.p
+            className="text-slate-600 dark:text-slate-400"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             Showcase of my recent work and creative projects
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
 
         {/* Projects grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-20 lg:gap-32"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.2 }}
         >
           {projects.map((project) => (
-            <motion.div
+            <TiltCard
               key={project.id}
-              variants={cardVariants}
-              whileHover={{ y: -4 }}
               className="group"
+              variants={cardVariants}
             >
               <div
-                className="h-full p-6 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 hover:shadow-lg transition-shadow duration-300"
+                className="relative h-full"
               >
-                {/* Header */}
-                <div className="mb-4 pb-4 border-b border-slate-200 dark:border-slate-700">
-                  <div className="flex items-start justify-between mb-2">
-                    <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
-                      {project.title}
-                    </h3>
-                    <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
-                      {project.dates}
-                    </span>
-                  </div>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">
-                    {project.description}
-                  </p>
-                </div>
-
-                {/* Highlights */}
-                <ul className="mb-4 space-y-2">
-                  {project.highlights.map((highlight, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
-                      <span className="text-blue-600 dark:text-blue-400 font-bold mt-0.5">•</span>
-                      {highlight}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Tech stack */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.map((tech) => (
-                    <motion.span
-                      key={tech}
-                      className="px-3 py-1 text-xs font-medium rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      {tech}
-                    </motion.span>
-                  ))}
-                </div>
-
-                {/* Link */}
-                <motion.a
-                  href={project.link}
-                  className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
-                  whileHover={{ x: 4 }}
+                {/* Glow Effect Background */}
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-0 group-hover:opacity-25 transition duration-500" />
+                
+                <div
+                  className="relative h-full p-6 rounded-lg border border-blue-500 dark:border-blue-400 bg-gradient-to-br from-blue-500/5 to-transparent dark:from-blue-600/10 transition-all duration-300 flex flex-col hover:shadow-xl group-hover:border-blue-500 dark:group-hover:border-blue-400"
                 >
-                  View Project →
-                </motion.a>
+                  {/* Header */}
+                  <div className="mb-4 pb-4 border-b border-slate-200 dark:border-slate-700">
+                    <div className="flex items-start justify-between mb-2">
+                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                        {project.title}
+                      </h3>
+                      <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                        {project.dates}
+                      </span>
+                    </div>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  {/* Highlights */}
+                  <ul className="mb-4 space-y-2">
+                    {project.highlights.map((highlight, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
+                        <span className="text-blue-600 dark:text-blue-400 font-bold mt-0.5">•</span>
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Tech stack */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tech.map((tech) => (
+                      <motion.span
+                        key={tech}
+                        className="px-3 py-1 text-xs font-medium rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400"
+                        whileHover={{ scale: 1.1, backgroundColor: "rgba(37, 99, 235, 0.2)" }}
+                      >
+                        {tech}
+                      </motion.span>
+                    ))}
+                  </div>
+
+                  {/* Link */}
+                  <div className="mt-auto">
+                    <motion.a
+                      href={project.link}
+                      className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                      whileHover={{ x: 4 }}
+                    >
+                      View Project →
+                    </motion.a>
+                  </div>
+                </div>
               </div>
-            </motion.div>
+            </TiltCard>
           ))}
         </motion.div>
       </div>

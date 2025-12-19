@@ -1,5 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Reveal } from './Reveal'
+import { TiltCard } from './TiltCard'
 
 export function Skills() {
   const skillCategories = [
@@ -45,48 +47,44 @@ export function Skills() {
     <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900">
       <div className="max-w-6xl mx-auto">
         {/* Section heading */}
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-            Technical Skills
-          </h2>
-        </motion.div>
+        <div className="mb-16">
+          <Reveal>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              Technical Skills
+            </h2>
+          </Reveal>
+        </div>
 
         {/* Skills grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.2 }}
         >
           {skillCategories.map((category) => (
-            <motion.div
-              key={category.name}
-              variants={categoryVariants}
-              className="p-6 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
-            >
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
-                {category.name}
-              </h3>
-              <div className="space-y-2">
-                {category.items.map((skill) => (
-                  <motion.p
-                    key={skill}
-                    className="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-2"
-                    whileHover={{ x: 4 }}
-                  >
-                    <span className="text-blue-600 dark:text-blue-400">•</span>
-                    {skill}
-                  </motion.p>
-                ))}
+            <TiltCard key={category.name} variants={categoryVariants} className="group">
+              <div
+                className="h-full p-6 rounded-lg border border-blue-500 dark:border-blue-400 bg-gradient-to-br from-blue-500/5 to-transparent dark:from-blue-600/10 transition-all duration-300 hover:shadow-lg group-hover:border-blue-500 dark:group-hover:border-blue-400"
+              >
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
+                  {category.name}
+                </h3>
+                <div className="space-y-2">
+                  {category.items.map((skill) => (
+                    <motion.p
+                      key={skill}
+                      className="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-2"
+                      whileHover={{ x: 4, color: "#2563eb" }}
+                    >
+                      <span className="text-blue-600 dark:text-blue-400">•</span>
+                      {skill}
+                    </motion.p>
+                  ))}
+                </div>
               </div>
-            </motion.div>
+            </TiltCard>
           ))}
         </motion.div>
 
@@ -95,7 +93,7 @@ export function Skills() {
           className="mt-16 p-6 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
@@ -106,7 +104,7 @@ export function Skills() {
               <motion.span
                 key={skill}
                 className="px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-medium"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.1, rotate: [0, -2, 2, 0] }}
                 whileTap={{ scale: 0.95 }}
               >
                 {skill}

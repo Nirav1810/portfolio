@@ -34,16 +34,17 @@ export function Hero() {
   return (
     <motion.section
       id="home"
-      className="relative min-h-screen pt-20 pb-20 px-4 sm:px-6 lg:px-8 flex items-center justify-center"
+      className="relative min-h-screen py-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center overflow-hidden"
       variants={containerVariants}
       initial="hidden"
-      animate="visible"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.3 }}
     >
       <div className="max-w-3xl w-full">
-        <motion.div className="text-center space-y-6">
+        <motion.div className="text-center space-y-4 md:space-y-6">
           {/* Greeting */}
           <motion.p
-            className="text-sm font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wide"
+            className="text-xs md:text-sm font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wide"
             variants={itemVariants}
           >
             Welcome to my portfolio
@@ -51,8 +52,10 @@ export function Hero() {
 
           {/* Name */}
           <motion.h1
-            className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 dark:text-white leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 dark:text-white leading-tight"
             variants={itemVariants}
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300 }}
           >
             Nirav Surati
           </motion.h1>
@@ -61,6 +64,14 @@ export function Hero() {
           <motion.h2
             className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 font-medium"
             variants={itemVariants}
+            animate={{ 
+              color: ["#475569", "#2563eb", "#475569"],
+            }}
+            transition={{ 
+              duration: 4, 
+              repeat: Infinity,
+              ease: "easeInOut" 
+            }}
           >
             Computer Science Student
           </motion.h2>

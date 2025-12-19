@@ -6,21 +6,27 @@ import { Projects } from './components/Projects'
 import { Skills } from './components/Skills'
 import { Education } from './components/Education'
 import { Footer } from './components/Footer'
+import { ScrollProgress } from './components/ScrollProgress'
+import { AnimatedBackground } from './components/AnimatedBackground'
 import { ThemeProvider } from './context/ThemeContext'
 import './globals.css'
 
 function App() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-white transition-colors duration-300">
-        <Header />
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Education />
-        <Footer />
-      </div>
+      <>
+        <AnimatedBackground />
+        <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-white transition-colors duration-300 relative z-10">
+          <ScrollProgress />
+          <Header />
+          <Hero />
+          <About />
+          <Projects />
+          <Skills />
+          <Education />
+          <Footer />
+        </div>
+      </>
     </ThemeProvider>
   )
 }
