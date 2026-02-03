@@ -58,7 +58,7 @@ export function Projects() {
   }
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-800">
+    <section id="projects" className="pt-6 pb-10 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-800">
       <div className="max-w-6xl mx-auto">
         {/* Section heading */}
         <div className="mb-16">

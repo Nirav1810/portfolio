@@ -15,26 +15,20 @@ export function TiltCard({ children, className = "", ...props }) {
     let isZoomed = false
 
     const handleMouseEnter = () => {
-      // Clear any existing timeout
       if (scaleTimeoutRef.current) {
         clearTimeout(scaleTimeoutRef.current)
       }
-      // Add delay before scaling
       scaleTimeoutRef.current = setTimeout(() => {
-        scale = 1.25
-        // Add transition for smooth animation
-        element.style.transition = "transform 0.6s cubic-bezier(0.23, 1, 0.320, 1)"
+        scale = 1.08
+        element.style.transition = "transform 0.4s cubic-bezier(0.23, 1, 0.320, 1)"
         element.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(${scale})`
-        
-        // Mark as zoomed after animation completes
         scaleTimeoutRef.current = setTimeout(() => {
           isZoomed = true
-        }, 600)
-      }, 250)
+        }, 400)
+      }, 200)
     }
 
     const handleMouseLeave = () => {
-      // Clear the timeout if mouse leaves before scale happens
       if (scaleTimeoutRef.current) {
         clearTimeout(scaleTimeoutRef.current)
       }
