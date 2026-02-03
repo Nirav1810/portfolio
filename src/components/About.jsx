@@ -61,12 +61,14 @@ export function About() {
               href="https://www.google.com/maps/place/Surat,+Gujarat"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-semibold text-slate-800 dark:text-slate-200 hover:text-blue-500 dark:hover:text-blue-400"
+              className="inline-flex items-center gap-2 font-semibold text-slate-800 dark:text-slate-200"
             >
               <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400">
                 <LocationIcon />
               </span>
-              <span>Surat, Gujarat</span>
+              <span className="font-semibold text-slate-800 dark:text-slate-200 hover:text-blue-500 dark:hover:text-blue-400">
+                Surat, Gujarat
+              </span>
             </a>
 
             <button
@@ -76,12 +78,12 @@ export function About() {
                 setPhoneCopied(true)
                 setTimeout(() => setPhoneCopied(false), 2000)
               }}
-              className="inline-flex items-center gap-2 group"
+              className="inline-flex items-center gap-2"
             >
-              <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+              <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400">
                 <PhoneIcon />
               </span>
-              <span className="font-semibold text-slate-800 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+              <span className="font-semibold text-slate-800 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400">
                 {phoneCopied ? 'Phone copied!' : '+916353795646'}
               </span>
             </button>
