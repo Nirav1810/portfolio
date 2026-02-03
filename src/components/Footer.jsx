@@ -56,10 +56,12 @@ export function Footer() {
                 <motion.a
                   key={link.label}
                   href={link.url}
-                  className="block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm transition-colors"
+                  className="group block text-slate-600 dark:text-slate-400 text-sm transition-colors"
                   whileHover={{ x: 4 }}
                 >
-                  {link.label}
+                  <span className="transition-colors group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-sky-400 group-hover:bg-clip-text">
+                    {link.label}
+                  </span>
                 </motion.a>
               ))}
             </div>
@@ -79,7 +81,7 @@ export function Footer() {
                   key={i}
                   href={item.url}
                   title={item.label}
-                  className="w-10 h-10 rounded-lg bg-slate-200 text-slate-700 hover:bg-blue-600 hover:text-white dark:bg-slate-800 dark:text-slate-50 flex items-center justify-center transition-all"
+                  className="w-10 h-10 rounded-lg flex items-center justify-center bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all"
                   whileHover={{ scale: 1.2, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
                 >

@@ -62,10 +62,15 @@ export function Header() {
               <motion.a
                 key={item}
                 href={item === 'Contact' ? '#home' : `#${item.toLowerCase()}`}
-                className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+                className="relative group text-sm font-medium text-slate-600 dark:text-slate-400 transition-colors"
                 variants={itemVariants}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
               >
-                {item}
+                <span className="relative transition-colors group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-sky-400 group-hover:bg-clip-text">
+                  {item}
+                  <span className="pointer-events-none absolute left-0 -bottom-0.5 w-full h-0.5 origin-left scale-x-0 bg-blue-600 dark:bg-blue-400 transition-transform duration-200 group-hover:scale-x-100" />
+                </span>
               </motion.a>
             ))}
           </motion.nav>
