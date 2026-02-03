@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { GitHubIcon } from './icons/GitHubIcon'
+import { MailIcon } from './icons/MailIcon'
 import { LiquidMeshBackground } from './LiquidMeshBackground'
 import { WordHoverHeader } from './WordHoverHeader'
 
@@ -99,42 +100,36 @@ export function Hero() {
             className="flex flex-col sm:flex-row gap-4 justify-center pt-8"
             variants={itemVariants}
           >
-            <motion.div
-              variants={itemVariants}
-            >
+            <motion.div variants={itemVariants}>
               <motion.button
                 onClick={copyEmailToClipboard}
-                className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-colors ${
-                  emailCopied
-                    ? 'bg-green-600 text-white'
-                    : 'bg-blue-600 text-white hover:bg-blue-700'
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-3 px-5 py-3 rounded-xl border border-slate-200/70 dark:border-slate-700/70 bg-slate-50/60 dark:bg-slate-900/40 text-slate-800 dark:text-slate-200 shadow-sm hover:border-blue-500 hover:bg-blue-500/5 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
               >
-                📧 {emailCopied ? 'Email Copied!' : 'Copy Email'}
+                <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400">
+                  <MailIcon />
+                </span>
+                <span className="font-medium">
+                  {emailCopied ? 'Email copied!' : 'niravsurati20@gmail.com'}
+                </span>
               </motion.button>
             </motion.div>
-            <motion.div
-              variants={itemVariants}
-            >
-              <span className="inline-flex items-center justify-center px-4 py-3 text-slate-700 dark:text-slate-300 font-medium">
-                niravsurati20@gmail.com
-              </span>
-            </motion.div>
-            <motion.div
-              variants={itemVariants}
-            >
+            <motion.div variants={itemVariants}>
               <motion.a
                 href="https://github.com/Nirav1810/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border-2 border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-3 px-5 py-3 rounded-xl border border-slate-200/70 dark:border-slate-700/70 bg-slate-50/60 dark:bg-slate-900/40 text-slate-800 dark:text-slate-200 shadow-sm hover:border-blue-500 hover:bg-blue-500/5 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
               >
-                <GitHubIcon />
-                GitHub
+                <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400">
+                  <GitHubIcon />
+                </span>
+                <span className="font-medium">
+                  GitHub
+                </span>
               </motion.a>
             </motion.div>
           </motion.div>
