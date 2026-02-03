@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Reveal } from './Reveal'
 import { TiltCard } from './TiltCard'
+import { WordHoverHeader } from './WordHoverHeader'
 
 export function Skills() {
   const skillCategories = [
@@ -49,9 +50,11 @@ export function Skills() {
         {/* Section heading */}
         <div className="mb-16">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-              Technical Skills
-            </h2>
+            <WordHoverHeader
+              as="h2"
+              text="Technical Skills"
+              className="text-3xl md:text-4xl font-bold mb-4"
+            />
           </Reveal>
         </div>
 

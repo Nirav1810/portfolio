@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Reveal } from './Reveal'
 import { TiltCard } from './TiltCard'
+import { WordHoverHeader } from './WordHoverHeader'
 
 export function Highlights() {
   const highlights = [
@@ -63,9 +64,11 @@ export function Highlights() {
         {/* Section heading */}
         <div className="mb-16">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-              What I'm Passionate About
-            </h2>
+            <WordHoverHeader
+              as="h2"
+              text="What I'm Passionate About"
+              className="text-3xl md:text-4xl font-bold mb-4"
+            />
           </Reveal>
           <motion.p
             className="text-slate-600 dark:text-slate-400"

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { GitHubIcon } from './icons/GitHubIcon'
 import { LiquidMeshBackground } from './LiquidMeshBackground'
+import { WordHoverHeader } from './WordHoverHeader'
 
 export function Hero() {
   const [emailCopied, setEmailCopied] = useState(false)
@@ -56,19 +57,17 @@ export function Hero() {
           </motion.p>
 
           {/* Name */}
-          <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 dark:text-white leading-tight"
+          <WordHoverHeader
+            as="h1"
+            text="Nirav Surati"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight"
             style={{
               textShadow: '0 14px 40px rgba(2,6,23,0.75)',
               WebkitTextStroke: '0.6px rgba(2,6,23,0.08)',
               transformOrigin: 'center'
             }}
             variants={itemVariants}
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            Nirav Surati
-          </motion.h1>
+          />
 
           {/* Subtitle */}
           <motion.h2

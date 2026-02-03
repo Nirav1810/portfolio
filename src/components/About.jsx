@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Reveal } from './Reveal'
+import { WordHoverHeader } from './WordHoverHeader'
 
 export function About() {
   const containerVariants = {
@@ -28,9 +29,11 @@ export function About() {
       <div className="max-w-6xl mx-auto">
         <div className="max-w-3xl">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">
-              About Me
-            </h2>
+            <WordHoverHeader
+              as="h2"
+              text="About Me"
+              className="text-3xl md:text-4xl font-bold mb-6"
+            />
           </Reveal>
 
           <motion.p
