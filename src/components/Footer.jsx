@@ -20,7 +20,7 @@ export function Footer() {
 
   return (
     <motion.footer
-      className="bg-slate-900 dark:bg-slate-950 text-slate-50 py-12"
+      className="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50 py-12"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, amount: 0.1 }}
@@ -35,10 +35,10 @@ export function Footer() {
             viewport={{ once: false }}
             transition={{ delay: 0.2 }}
           >
-            <a href="#home" className="text-xl font-bold mb-4 block hover:text-blue-400 transition-colors">
+            <a href="#home" className="text-xl font-bold mb-4 block hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
               Nirav Surati
             </a>
-            <p className="text-slate-400 text-sm leading-relaxed">
+            <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
               Computer Science student building full-stack applications and blockchain solutions with modern technologies.
             </p>
           </motion.div>
@@ -56,8 +56,8 @@ export function Footer() {
                 <motion.a
                   key={link.label}
                   href={link.url}
-                  className="block text-slate-400 hover:text-white text-sm transition-colors"
-                  whileHover={{ x: 4, color: "#fff" }}
+                  className="block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm transition-colors"
+                  whileHover={{ x: 4 }}
                 >
                   {link.label}
                 </motion.a>
@@ -79,7 +79,7 @@ export function Footer() {
                   key={i}
                   href={item.url}
                   title={item.label}
-                  className="w-10 h-10 rounded-lg bg-slate-800 hover:bg-blue-600 flex items-center justify-center transition-all text-slate-50"
+                  className="w-10 h-10 rounded-lg bg-slate-200 text-slate-700 hover:bg-blue-600 hover:text-white dark:bg-slate-800 dark:text-slate-50 flex items-center justify-center transition-all"
                   whileHover={{ scale: 1.2, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -92,14 +92,14 @@ export function Footer() {
 
         {/* Divider */}
         <motion.div 
-          className="border-t border-slate-800 pt-8"
+          className="border-t border-slate-200 dark:border-slate-800 pt-8"
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           viewport={{ once: false }}
           transition={{ duration: 1, delay: 0.5 }}
         >
           <motion.p
-            className="text-center text-slate-400 text-sm"
+            className="text-center text-slate-500 dark:text-slate-400 text-sm"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}

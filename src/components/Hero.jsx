@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { GitHubIcon } from './icons/GitHubIcon'
+import { LiquidMeshBackground } from './LiquidMeshBackground'
 
 export function Hero() {
   const [emailCopied, setEmailCopied] = useState(false)
@@ -40,8 +41,12 @@ export function Hero() {
       whileInView="visible"
       viewport={{ once: false, amount: 0.3 }}
     >
-      <div className="max-w-3xl w-full">
-        <motion.div className="text-center space-y-4 md:space-y-6">
+      <LiquidMeshBackground />
+
+      <div className="max-w-3xl w-full relative z-10">
+        <motion.div
+          className="text-center space-y-4 md:space-y-6"
+        >
           {/* Greeting */}
           <motion.p
             className="text-xs md:text-sm font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wide"
@@ -52,7 +57,12 @@ export function Hero() {
 
           {/* Name */}
           <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 dark:text-white leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 dark:text-white leading-tight"
+            style={{
+              textShadow: '0 14px 40px rgba(2,6,23,0.75)',
+              WebkitTextStroke: '0.6px rgba(2,6,23,0.08)',
+              transformOrigin: 'center'
+            }}
             variants={itemVariants}
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
@@ -62,10 +72,11 @@ export function Hero() {
 
           {/* Subtitle */}
           <motion.h2
-            className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 font-medium"
+            className="text-xl md:text-2xl text-slate-100 dark:text-slate-200 font-semibold drop-shadow-lg"
+            style={{ textShadow: '0 8px 18px rgba(2,6,23,0.6)', letterSpacing: '0.6px' }}
             variants={itemVariants}
             animate={{ 
-              color: ["#475569", "#2563eb", "#475569"],
+              color: ["#d1d5db", "#8ab2ff", "#d1d5db"],
             }}
             transition={{ 
               duration: 4, 
